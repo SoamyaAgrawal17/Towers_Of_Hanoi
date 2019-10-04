@@ -1,0 +1,51 @@
+<HTML>
+<head><title>Towers Of Hanoi </title>
+</head>
+<body>
+<p> <b>Towers Of Hanoi game </b></p>
+<p>The Tower of Hanoi is a mathematical game or puzzle. It consists of three rods, and a number of disks of different sizes which can slide onto any rod. The puzzle starts with the disks in a neat stack in ascending order of size on one rod, the smallest at the top, thus making a conical shape.
+<p>The objective of the puzzle is to move the entire stack to another rod, obeying the following simple rules:
+
+    <p>Only one disk can be moved at a time.</p>
+   <p> Each move consists of taking the upper disk from one of the stacks and placing it on top of another stack i.e. a disk can only be moved if it is the uppermost disk on a stack.</p>
+  <p>  No disk may be placed on top of a smaller disk.</p>
+
+With three disks, the puzzle can be solved in seven moves. The minimum number of moves required to solve a Tower of Hanoi puzzle is 2n - 1, where n is the number of disks.</p></p>
+<br><br>
+<p><b>Keyboard Functions:</b></p>
+<p>"ATB" moves the topmost disk of rod A to rod B.</p>
+<p>"ATC" moves the topmost disk of rod A to rod C.</p>
+<p>"BTA" moves the topmost disk of rod B to rod A.</p>
+<p>"BTC" moves the topmost disk of rod B to rod C.</p>
+<p>"CTA" moves the topmost disk of rod C to rod A.</p>
+<p>"CTB" moves the topmost disk of rod C to rod B.</p>
+<p>'3' On pressing it number of disks would be set to 3.</p>
+<p>'4' On pressing it number of disks would be set to 4.</p>
+<p>'5' On pressing it number of disks would be set to 5.</p>
+<p>'6' On pressing it number of disks would be set to 6.</p>
+<p>'7' On pressing it number of disks would be set to 7.</p>
+<p>'8' On pressing it number of disks would be set to 8.</p>
+<p>'9' On pressing it number of disks would be set to 9.</p>
+By default number of disks are set to be 10.
+<p>'R' : On pressing it , the disks would be reset (stored in initial position).</p>
+<p>'H' : On pressing it , the solution would be provided on the console </p>
+<p>'Esc' to quit </p>
+<br>
+<p><b>Display functions</b> </p>
+<p>To make the rods,glutSolidCylinder() is used. </p>
+<p>To make the rings,glutSolidTorus() is used. </p>
+<p>To write text on screen, glutBitMapCharacter() is used. It is used to generate the texts such as moves and name of the game on the screen. </p><br>
+ <p>All the rings are stored as structures in stacks. For each rod there is one stack defined. Stack class is declared which contains the functions like push() , pop(), noEle() to give number of elements and all.</p>
+<p>tower() function is called, when user press 'H' for solution.</p><br>
+<p> <b>  PlaySound function </b>was used to put the sound effects when ring is put from one rod to other and also when user gives some invalid input.</p><br>
+<p> <b>Mouse Functions</b></p> 
+<p>Mouse functions to drag the scene according to the position of the mouse.</p>
+<p> Textures were put to rods and rings using built in GLUT functions </p>
+<p> User can see the number of moves and time elapsed after the start of the game on the screen </p>
+<p> Once the user completes the game , solved message is displayed </p>
+<p>Game looks like this -></p>
+<img src="capture.png" /><br>
+<img src="capture1.png" />
+ </body>
+</head>
+</HTML>
