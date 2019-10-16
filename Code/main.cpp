@@ -1,21 +1,21 @@
-                #ifdef __APPLE__
-                #include <GLUT/glut.h>
-                #else
-                #include <GL/glut.h>
-                #endif
-                #include <stdlib.h>
-                #include<iostream>
-                #include <GL/gl.h>
+#ifdef __APPLE__
+#define GL_SILENCE_DEPRECATION
+#include <OpenGL/gl.h>
+#include <OpenGL/glu.h>
+#include <GLUT/glut.h>
+#else
+#include <GL/gl.h>
+#include <GL/glu.h>
+#include <GL/glut.h>
+#endif
+#include <stdlib.h>
+#include<iostream>
+// #include<bits/stdc++.h>
+#include <string>
 
-                #include <GL/glu.h>
-                #include <GL/glut.h>
-                #include<bits/stdc++.h>
-                #include<iostream>
-                #include <string>
-                #include<windows.h>
-                #include<mmsystem.h>
-
-                using namespace std;
+// #include<windows.h>
+// #include<mmsystem.h>
+using namespace std;
 
                  ///global variables
 
@@ -47,8 +47,8 @@
                 double pan_hor=0.0;
                 double pan_ver=0.0;
                 #define MAX 10
-                ofstream solution;
-                ofstream user_solution;
+                //ofstream solution;
+                //ofstream user_solution;
                 int moves=0;
                 int sound_is_playing=1;
                 typedef struct {
@@ -61,14 +61,6 @@
                     float cy;
                     float cz;
                 } disks;
-
-
-                std::string to_string(int i)
-                {
-                    std::stringstream ss;
-                    ss << i;
-                    return ss.str();
-                }
 
                 ///declaring class stack
 
@@ -101,7 +93,7 @@
                              if(top == -1)
                             {
                                   cout<<endl<< "Stack is empty";
-                                   return NULL;
+                                   return 0;
                             }
 
                             int data = arr[top];
@@ -156,7 +148,7 @@
 
                    if(a==1){
 
-                       solution<<"\t\tMove disc 1 from "<<from<<" to "<<to<<"\n";
+                       //solution<<"\t\tMove disc 1 from "<<from<<" to "<<to<<"\n";
                 int i1=1;
                                     s2.Push(1);
                             cout<<"\t\tMove disc 1 from "<<from<<" to "<<to<<"\n";
@@ -199,7 +191,7 @@
                                     }
                                     sound_is_playing=0;
 
-                                    PlaySound("disk.wav", NULL, SND_ASYNC|SND_FILENAME);
+                                    ////PlaySound("disk.wav", NULL, SND_ASYNC|SND_FILENAME);
 
 
                             moves++;
@@ -210,7 +202,7 @@
                     else{
                        tower(a-1,from,to,aux);
 
-                       solution<<"\t\tMove disc "<<a<<" from "<<from<<" to "<<to<<"\n";
+                       //solution<<"\t\tMove disc "<<a<<" from "<<from<<" to "<<to<<"\n";
                             if(to=='B'&&from=='A')
                         {
                             ///rod a to b
@@ -221,7 +213,7 @@
                                     sss1="element "+to_string(i1)+ " moved from s1 to s2";
                                     sound_is_playing=0;
 
-                                    PlaySound("disk.wav", NULL, SND_ASYNC|SND_FILENAME);
+                                    ////PlaySound("disk.wav", NULL, SND_ASYNC|SND_FILENAME);
                                     disk[i1].xcoord=0;
                                     disk[i1].ycoord=s2.noEle()+disk[num_disks-1].ycoord-0.5;
 
@@ -235,7 +227,7 @@
                                     s3.Push(i1);
     cout<<"element "<<i1<< " moved from s1 to s3 "<<endl;sss1="element "+to_string(i1)+" moved from s1 to s3 ";
                                     sound_is_playing=0;
-    PlaySound("disk.wav", NULL, SND_ASYNC|SND_FILENAME);
+    //PlaySound("disk.wav", NULL, SND_ASYNC|SND_FILENAME);
                                     disk[i1].xcoord=-1;
                                     disk[i1].ycoord=s3.noEle()+disk[num_disks-1].ycoord-0.5;
                                     moves++;
@@ -251,7 +243,7 @@
                                     cout<<"element "<<i1<< " moved from s2 to s1 "<<endl;sss1="element "+to_string(i1)+" moved from s2 to s1 ";
                                     sound_is_playing=0;
 
-                                    PlaySound("disk.wav", NULL, SND_ASYNC|SND_FILENAME);
+                                    ////PlaySound("disk.wav", NULL, SND_ASYNC|SND_FILENAME);
                                     disk[i1].xcoord=1;
                                     disk[i1].ycoord=s1.noEle()-0.1;
 
@@ -267,7 +259,7 @@
                                     cout<<"element "<<i1<< " moved from s2 to s3 "<<endl;sss1="element "+to_string(i1)+" moved from s2 to s3 ";
                                     sound_is_playing=0;
 
-                                    PlaySound("disk.wav", NULL, SND_ASYNC|SND_FILENAME);
+                                    ////PlaySound("disk.wav", NULL, SND_ASYNC|SND_FILENAME);
                                     disk[i1].xcoord=-1;
                                     disk[i1].ycoord=s3.noEle()+disk[num_disks-1].ycoord-0.5;
 
@@ -282,7 +274,7 @@
                                     cout<<"element "<<i1<< " moved from s3 to s1 "<<endl;sss1="element "+to_string(i1)+" moved from s3 to s1 ";
                                     sound_is_playing=0;
 
-                                    PlaySound("disk.wav", NULL, SND_ASYNC|SND_FILENAME);
+                                    ////PlaySound("disk.wav", NULL, SND_ASYNC|SND_FILENAME);
                                     disk[i1].xcoord=1;
                                     disk[i1].ycoord=s1.noEle()-0.1;
                                     moves++;
@@ -296,7 +288,7 @@
                                     cout<<"element "<<i1<< " moved from s3 to s2 "<<endl;sss1="element "+to_string(i1)+" moved from s3 to s2 ";
                                     sound_is_playing=0;
 
-                                    PlaySound("disk.wav", NULL, SND_ASYNC|SND_FILENAME);
+                                    ////PlaySound("disk.wav", NULL, SND_ASYNC|SND_FILENAME);
                                     disk[i1].xcoord=0;
                                     disk[i1].ycoord=s2.noEle()+disk[num_disks-1].ycoord-0.5;
                                     moves++;
@@ -442,7 +434,7 @@ float my = 0.0;
                         {
                             sss4="SOLVED!!!";
                             sound_is_playing=0;
-                PlaySound("Ta Da.wav", NULL, SND_ASYNC|SND_FILENAME);
+                ////PlaySound("Ta Da.wav", NULL, SND_ASYNC|SND_FILENAME);
 
                         }
 
@@ -523,7 +515,7 @@ float my = 0.0;
                                 cout<<"empty can't move "<<endl;
                                 sss1="empty! can't move";
                                 sound_is_playing=0;
-                                    PlaySound("wrong.wav", NULL, SND_ASYNC|SND_FILENAME);
+                                    ////PlaySound("wrong.wav", NULL, SND_ASYNC|SND_FILENAME);
                             }
                             else{
                                 if(s2.empty()||s1.top_ele()<s2.top_ele())
@@ -534,16 +526,16 @@ float my = 0.0;
                                     sss1="element "+to_string(i1)+ " moved from s1 to s2";
                                     sound_is_playing=0;
 
-                                    PlaySound("disk.wav", NULL, SND_ASYNC|SND_FILENAME);
+                                    ////PlaySound("disk.wav", NULL, SND_ASYNC|SND_FILENAME);
                                     disk[i1].xcoord=0;
                                     disk[i1].ycoord=s2.noEle()+disk[num_disks-1].ycoord-0.5;
-                                    user_solution<<key<<i1<<endl;
+                                    //user_solution<<key<<i1<<endl;
                                     moves++;
                                 }
                                 else
                                  {
                                     cout<<"invalid move"<<endl;sound_is_playing=0;sss1="invalid move";
-                                    PlaySound("wrong.wav", NULL, SND_ASYNC|SND_FILENAME);
+                                    ////PlaySound("wrong.wav", NULL, SND_ASYNC|SND_FILENAME);
                                  }
                             }
 
@@ -556,7 +548,7 @@ float my = 0.0;
                             {
                                 cout<<"empty can't move "<<endl;sss1="empty! can't move";
                                 sound_is_playing=0;
-                                    PlaySound("wrong.wav", NULL, SND_ASYNC|SND_FILENAME);
+                                    //PlaySound("wrong.wav", NULL, SND_ASYNC|SND_FILENAME);
                             }
                             else{
                                 if(s3.empty()||s1.top_ele()<s3.top_ele())
@@ -566,16 +558,16 @@ float my = 0.0;
                                     cout<<"element "<<i1<< " moved from s1 to s3 "<<endl;sss1="element "+to_string(i1)+" moved from s1 to s3 ";
                                     sound_is_playing=0;
 
-                                    PlaySound("disk.wav", NULL, SND_ASYNC|SND_FILENAME);
+                                    //PlaySound("disk.wav", NULL, SND_ASYNC|SND_FILENAME);
                                     disk[i1].xcoord=-1;
                                     disk[i1].ycoord=s3.noEle()+disk[num_disks-1].ycoord-0.5;
-                                    user_solution<<key<<i1<<endl;
+                                    //user_solution<<key<<i1<<endl;
                                     moves++;
                                 }
                                 else
                                  {
                                     cout<<"invalid move"<<endl;sound_is_playing=0;sss1="invalid move";
-                                    PlaySound("wrong.wav", NULL, SND_ASYNC|SND_FILENAME);
+                                    //PlaySound("wrong.wav", NULL, SND_ASYNC|SND_FILENAME);
                                  }
                             }
 
@@ -588,7 +580,7 @@ float my = 0.0;
                             {
                                 cout<<"empty can't move "<<endl;sss1="empty! can't move";
                                 sound_is_playing=0;
-                                    PlaySound("wrong.wav", NULL, SND_ASYNC|SND_FILENAME);
+                                    //PlaySound("wrong.wav", NULL, SND_ASYNC|SND_FILENAME);
                             }
                 else{
                     if(s1.empty()||s2.top_ele()<s1.top_ele())
@@ -598,16 +590,16 @@ float my = 0.0;
                                     cout<<"element "<<i1<< " moved from s2 to s1 "<<endl;sss1="element "+to_string(i1)+" moved from s2 to s1 ";
                                     sound_is_playing=0;
 
-                                    PlaySound("disk.wav", NULL, SND_ASYNC|SND_FILENAME);
+                                    //PlaySound("disk.wav", NULL, SND_ASYNC|SND_FILENAME);
                                     disk[i1].xcoord=1;
                                     disk[i1].ycoord=s1.noEle()-0.1;
-                                    user_solution<<key<<" "<<i1<<endl;
+                                    //user_solution<<key<<" "<<i1<<endl;
                                     moves++;
                                 }
                                 else
                                  {
                                     cout<<"invalid move "<<endl;sound_is_playing=0;sss1="invalid move";
-                                    PlaySound("wrong.wav", NULL, SND_ASYNC|SND_FILENAME);
+                                    //PlaySound("wrong.wav", NULL, SND_ASYNC|SND_FILENAME);
                                  }
                 }
 
@@ -621,7 +613,7 @@ float my = 0.0;
                             {
                                 cout<<"empty can't move "<<endl;sss1="empty! can't move";
                                 sound_is_playing=0;
-                                    PlaySound("wrong.wav", NULL, SND_ASYNC|SND_FILENAME);
+                                    //PlaySound("wrong.wav", NULL, SND_ASYNC|SND_FILENAME);
                             }
                             else
                             {
@@ -632,17 +624,17 @@ float my = 0.0;
                                     cout<<"element "<<i1<< " moved from s2 to s3 "<<endl;sss1="element "+to_string(i1)+" moved from s2 to s3 ";
                                     sound_is_playing=0;
 
-                                    PlaySound("disk.wav", NULL, SND_ASYNC|SND_FILENAME);
+                                    //PlaySound("disk.wav", NULL, SND_ASYNC|SND_FILENAME);
                                     disk[i1].xcoord=-1;
                                     disk[i1].ycoord=s3.noEle()+disk[num_disks-1].ycoord-0.5;
-                                    user_solution<<key<<" "<<i1<<endl;
+                                    //user_solution<<key<<" "<<i1<<endl;
                                     moves++;
                                 }
                                 else
                                  {
                                     cout<<"invalid move "<<endl;sss1="invalid move";
                                     sound_is_playing=0;
-                                    PlaySound("wrong.wav", NULL, SND_ASYNC|SND_FILENAME);
+                                    //PlaySound("wrong.wav", NULL, SND_ASYNC|SND_FILENAME);
                                  }
 
                             }
@@ -656,7 +648,7 @@ float my = 0.0;
                             {
                                 cout<<"empty can't move "<<endl;sss1="empty! can't move";
                                 sound_is_playing=0;
-                                    PlaySound("wrong.wav", NULL, SND_ASYNC|SND_FILENAME);
+                                    //PlaySound("wrong.wav", NULL, SND_ASYNC|SND_FILENAME);
                             }
                             else
                             {
@@ -667,17 +659,17 @@ float my = 0.0;
                                     cout<<"element "<<i1<< " moved from s3 to s1 "<<endl;sss1="element "+to_string(i1)+" moved from s3 to s1 ";
                                     sound_is_playing=0;
 
-                                    PlaySound("disk.wav", NULL, SND_ASYNC|SND_FILENAME);
+                                    //PlaySound("disk.wav", NULL, SND_ASYNC|SND_FILENAME);
                                     disk[i1].xcoord=1;
                                     disk[i1].ycoord=s1.noEle()-0.1;
-                                    user_solution<<key<<" "<<i1<<endl;
+                                    //user_solution<<key<<" "<<i1<<endl;
                                     moves++;
                                 }
                                 else
                                  {
                                     cout<<"invalid move"<<endl;sss1="invalid move";
                                     sound_is_playing=0;
-                                    PlaySound("wrong.wav", NULL, SND_ASYNC|SND_FILENAME);
+                                    //PlaySound("wrong.wav", NULL, SND_ASYNC|SND_FILENAME);
                                  }
 
                             }
@@ -691,7 +683,7 @@ float my = 0.0;
                             {
                                 cout<<"empty can't move "<<endl;sss1="empty! can't move";
                                 sound_is_playing=0;
-                                    PlaySound("wrong.wav", NULL, SND_ASYNC|SND_FILENAME);
+                                    //PlaySound("wrong.wav", NULL, SND_ASYNC|SND_FILENAME);
                             }
                             else
                             {
@@ -702,17 +694,17 @@ float my = 0.0;
                                     cout<<"element "<<i1<< " moved from s3 to s2 "<<endl;sss1="element "+to_string(i1)+" moved from s3 to s2 ";
                                     sound_is_playing=0;
 
-                                    PlaySound("disk.wav", NULL, SND_ASYNC|SND_FILENAME);
+                                    //PlaySound("disk.wav", NULL, SND_ASYNC|SND_FILENAME);
                                     disk[i1].xcoord=0;
                                     disk[i1].ycoord=s2.noEle()+disk[num_disks-1].ycoord-0.5;
-                                    user_solution<<key<<" "<<i1<<endl;
+                                    //user_solution<<key<<" "<<i1<<endl;
                                     moves++;
                                 }
                                 else
                                  {
                                     cout<<"invalid move"<<endl;sss1="invalid move";
                                     sound_is_playing=0;
-                                    PlaySound("wrong.wav", NULL, SND_ASYNC|SND_FILENAME);
+                                    //PlaySound("wrong.wav", NULL, SND_ASYNC|SND_FILENAME);
                                  }
 
                             }
