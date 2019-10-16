@@ -15,6 +15,6 @@ g++ ./main.cpp -o game -lGL -lGLU -lglut
 ### Mac
 Open terminal and run the following 
 ```sh
-gcc main.cpp -o game -framework OpenGL  -framework GLUT
+clang++ main.cpp -o game -framework OpenGL  -framework GLUT
 ```
 
