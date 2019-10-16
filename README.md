@@ -1,2 +1,20 @@
 # Towers_Of_Hanoi
-Implementation of Towers of Hanoi game
+Code is in C++ language. 
+## OpenGL Installation
+### Ubuntu
+Open terminal and run the following
+```sh
+sudo apt install freeglut3-dev
+```
+To run the code
+```sh
+g++ ./main.cpp -o game -lGL -lGLU -lglut
+./game
+```
+
+### Mac
+Open terminal and run the following 
+```sh
+gcc main.cpp -o game -framework OpenGL  -framework GLUT
+```
+
